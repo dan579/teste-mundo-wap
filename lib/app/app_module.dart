@@ -11,9 +11,5 @@ class AppModule extends Module {
         Modular.initialRoute, child: (_, args) => SplashPage()),
     ChildRoute("${Modular.initialRoute}loginPage",
         child: (_, args) => const HomePage()),
-    ChildRoute("${Modular.initialRoute}loginPage",
-        child: (_, args) => const HomePage()),
-    ChildRoute("${Modular.initialRoute}loginPage",
-        child: (_, args) => const HomePage()),
   ];
 }
