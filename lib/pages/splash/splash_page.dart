@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -22,37 +21,37 @@ class _SplashPageState extends State<SplashPage> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Colors.black,
+        color: Colors.white,
         child: Stack(children: [
           Center(
               child: Container(
                 child: Image.network(
                   "https://mundowap.com.br/wp-content/uploads/2021/08/logo-mundo-wap.png",
-                  height: 250,
-                  width: 250,
+                  height: 175,
+                  width: 175,
                 ),
               )),
           Center(
             child: Padding(
               padding:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
+              EdgeInsets.only(top: MediaQuery.of(context).size.height / 4),
               child: DefaultTextStyle(
                 style: TextStyle(
                     fontSize: 18.0,
                     fontFamily: 'Comfortaa',
                     fontWeight: FontWeight.normal,
-                    color: Colors.white),
+                    color: Colors.black),
                 child: AnimatedTextKit(
                   isRepeatingAnimation: false,
                   onFinished: () {
-                    Modular.to.pushReplacementNamed(Modular.initialRoute + "home", forRoot: true);
+                    Navigator.pushNamed(context, 'login');
                   },
                   animatedTexts: [
                     RotateAnimatedText(
-                      'BEM VINDO',
+                      'Teste para vaga de desenvolvedor mobile',
                       alignment: Alignment.center,
                     ),
-                    RotateAnimatedText('APLICAÇÃO DESENVOLVIDA POR DANIEL',
+                    RotateAnimatedText('Seja bem vindo',
                         alignment: Alignment.center,
                         textStyle: TextStyle(
                           fontSize: 15,
