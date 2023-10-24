@@ -114,9 +114,9 @@ ListToDo() {
               height: 55,
               padding: EdgeInsets.only(left: 10, right: 10),
               decoration: BoxDecoration(
-                color: Colors.lightBlueAccent.withOpacity(0.2),
+                color: Colors.grey.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(8.0),
-                border: Border.all(color: Colors.grey, width: 1.2),
+                border: Border.all(color: Colors.blueGrey, width: 1.2),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

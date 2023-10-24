@@ -27,62 +27,54 @@ class FormPageState extends State<FormPage> {
       backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.all(16.0),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(top: 25, bottom: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: (){
-                          Navigator.pop(context);
-                        },
-                        icon: Icon(
-                            Icons.arrow_back_ios
-                        ),
-                      ),
-                      const Text(
-                        'Formulário para \nrealização da tarefa',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            fontFamily: 'Comfortaa',
-                            fontWeight: FontWeight.normal,
-                            color: Colors.black),
-                      ),
-                      const SizedBox(
-                        width: 50,
-                      ),
-                    ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 25, bottom: 150),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                        Icons.arrow_back_ios
+                    ),
                   ),
-                ),
+                  const Text(
+                    'Formulário para \nrealização da tarefa',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'Comfortaa',
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black),
+                  ),
+                  const SizedBox(
+                    width: 50,
+                  ),
+                ],
+              ),
+            ),
+            Center(
+              child: Column(
+              children: <Widget>[
                 SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
                   child: Column(
                     children: [
                       ParentChildCheckbox(
-                        parent: const Text('Parent 1'),
+                        parent: const Text('Fluxo Login'),
+                        parentCheckboxColor: Colors.green,
+                        childrenCheckboxColor: Colors.blueAccent,
                         children: [
-                          Text('Children 1.1'),
-                          Text('Children 1.2'),
-                          Text('Children 1.3'),
-                          Text('Children 1.4'),
-                        ],
-                        parentCheckboxColor: Colors.orange,
-                        childrenCheckboxColor: Colors.red,
-                      ),
-                      ParentChildCheckbox(
-                        parent: Text('Parent 2'),
-                        children: [
-                          Text('Children 2.1'),
-                          Text('Children 2.2'),
-                          Text('Children 2.3'),
-                          Text('Children 2.4'),
+                          Text('Tela Login'),
+                          Text('Tela Home'),
+                          Text('Tela Formulário de taferas'),
+                          Text('Tela Splash (Opcional)'),
                         ],
                       ),
                       SizedBox(
@@ -103,20 +95,7 @@ class FormPageState extends State<FormPage> {
                               ),
                             ),
                             SizedBox(height: 20.0),
-                            TextButton(
-                              onPressed: () {
-                                final myProvider = Provider.of<MyProvider>(context, listen: false);
-                                myProvider.setCheck();
-                                Navigator.pushReplacementNamed(context, 'home');
-                              },
-                              child: Text('Finalizar Tarefa',
-                                style: TextStyle(
-                                    fontSize: 15.0,
-                                    fontFamily: 'Comfortaa',
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.blue),
-                              ),
-                            ),
+
                           ],
                         ),
                       ),
@@ -125,7 +104,33 @@ class FormPageState extends State<FormPage> {
                 ),
               ],
             ),
+            ),
+          ],
+        )
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 80, vertical: 25),
+        child: InkWell(
+          child: Container(
+            height: 45,
+            decoration:BoxDecoration(
+                color: Colors.grey.withOpacity(0.2),
+                border: Border.all(color: Colors.blueGrey, width: 1.2),
+                borderRadius: BorderRadius.circular(8)
+            ),
+            child: Center(
+              child: Text('Finalizar Tarefa',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 15.0,
+                    fontFamily: 'Comfortaa',
+                    fontWeight: FontWeight.normal,
+                    color: Colors.blue),
+              ),
+            )
           ),
+          onTap: () {
+          },
         ),
       ),
     );

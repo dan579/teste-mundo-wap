@@ -11,8 +11,12 @@ class LoginPage extends StatefulWidget {
 
 class LoginPageState extends State<LoginPage> {
 
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController userController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  String user = '';
+  String password = '';
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,69 +49,94 @@ class LoginPageState extends State<LoginPage> {
                     height: 25,
                   ),
                   Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextFormField(
-                          controller: userController,
-                          decoration: InputDecoration(
-                            icon: Icon(
-                              Icons.person
+                    child:Form(
+                      key: formKey,
+                      child:  Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextFormField(
+                            controller: userController,
+                            decoration: InputDecoration(
+                              icon: Icon(
+                                  Icons.person
+                              ),
+                              iconColor: Colors.lightBlue,
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(10))
+                              ),
+                              labelText: 'Usuário',
                             ),
-                            iconColor: Colors.lightBlue,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(10))
-                            ),
-                            labelText: 'Usuário',
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 25,
-                        ),
-                        TextFormField(
-                          controller: passwordController,
-                          decoration: const InputDecoration(
-                            icon: Icon(
-                                Icons.password
-                            ),
-                            iconColor: Colors.lightBlue,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(10))
-                            ),
-                            labelText: 'Senha',
-                          ),
-                          obscureText: true,
-                        ),
-                        SizedBox(height: 20.0),
-                        TextButton(
-
-                            onPressed: () {
-                              Navigator.pushReplacementNamed(context, 'home');
+                            validator: (userValue) {
+                              if (userValue!.isEmpty) {
+                                return 'Este campo é obrigatório.';
+                              }
+                              return null;
                             },
+                            onSaved: (userValue) {
+                              user = userValue!;
+                            },
+                          ),
+                          const SizedBox(
+                            height: 25,
+                          ),
+                          TextFormField(
+                            controller: passwordController,
+                            decoration: const InputDecoration(
+                              icon: Icon(
+                                  Icons.password
+                              ),
+                              iconColor: Colors.lightBlue,
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(10))
+                              ),
+                              labelText: 'Senha',
+                            ),
+                            obscureText: true,
+                            validator: (passwordValue) {
+                              if (passwordValue!.isEmpty) {
+                                return 'Este campo é obrigatório.';
+                              }
+                              return null;
+                            },
+                            onSaved: (passwordValue) {
+                              password = passwordValue!;
+                            },
+                          ),
+                          const SizedBox(height: 50.0),
+                          InkWell(
                             child: Container(
-                                width: 60,
-                                height: 35,
-                                decoration: BoxDecoration(
+                                height: 45,
+                                width: 150,
+                                decoration:BoxDecoration(
                                     color: Colors.grey.withOpacity(0.2),
-                                    border: Border.all(color: Colors.orangeAccent, width: 1.2),
+                                    border: Border.all(color: Colors.blueGrey, width: 1.2),
                                     borderRadius: BorderRadius.circular(8)
                                 ),
-                                child: Center(
-                                  child: const Text('Entrar',
+                                child: const Center(
+                                  child: Text('Entrar',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontSize: 15.0,
-                                      fontFamily: 'Comfortaa',
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.blue, ),
+                                        fontSize: 15.0,
+                                        fontFamily: 'Comfortaa',
+                                        fontWeight: FontWeight.normal,
+                                        color: Colors.blue),
                                   ),
                                 )
-                            )
-                        ),
-                      ],
-                    ),
+                            ),
+                            onTap: () {
+                                if (formKey.currentState!.validate()) {
+                                  formKey.currentState!.save();
+                                  print('Usuário:' + user);
+                                  print('Senha:' + password);
+                                  Navigator.pushReplacementNamed(context, 'home');
+                                }
+                            },
+                          ),
+                        ],
+                      ),
+                    )
                   ),
                 ],
               ),
