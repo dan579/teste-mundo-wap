@@ -28,14 +28,7 @@ class MyProvider with ChangeNotifier {
   MyProvider({this.isCompleted = false});
 
   setCheck() {
-    for (int i = 0; i < check.length; i++) {
-      if (check[i]) {
-        Icon(Icons.check);
-      } else {
-        Icon(Icons.close);
-      }
-      check[index] = true;
-      isCompleted = check[index];
-    }
+    isCompleted = true;
+      check[index] = isCompleted;
   }
 }

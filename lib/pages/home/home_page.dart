@@ -130,8 +130,8 @@ ListToDo() {
                         color: Colors.black),
                   ),
                   Provider.of<MyProvider>(context, listen: false).isCompleted
-                            ? Icon(Icons.check)
-                            : Icon(Icons.close),
+                            ? Icon(Icons.check, color: Colors.green,)
+                            : Icon(Icons.close, color: Colors.red,),
                 ],
               ),
             ),

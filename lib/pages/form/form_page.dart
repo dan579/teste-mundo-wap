@@ -110,26 +110,29 @@ class FormPageState extends State<FormPage> {
       ),
       bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(horizontal: 80, vertical: 25),
-        child: InkWell(
+        child:  InkWell(
           child: Container(
-            height: 45,
-            decoration:BoxDecoration(
-                color: Colors.grey.withOpacity(0.2),
-                border: Border.all(color: Colors.blueGrey, width: 1.2),
-                borderRadius: BorderRadius.circular(8)
-            ),
-            child: Center(
-              child: Text('Finalizar Tarefa',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 15.0,
-                    fontFamily: 'Comfortaa',
-                    fontWeight: FontWeight.normal,
-                    color: Colors.blue),
+              height: 45,
+              width: 150,
+              decoration:BoxDecoration(
+                  color: Colors.grey.withOpacity(0.2),
+                  border: Border.all(color: Colors.blueGrey, width: 1.2),
+                  borderRadius: BorderRadius.circular(8)
               ),
-            )
+              child: Center(
+                child: Text('Finalizar Tarefa',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 15.0,
+                      fontFamily: 'Comfortaa',
+                      fontWeight: FontWeight.normal,
+                      color: Colors.blue),
+                ),
+              )
           ),
           onTap: () {
+            Provider.of<MyProvider>(context, listen: false).isCompleted = true;
+            Navigator.pushReplacementNamed(context, 'home');
           },
         ),
       ),
