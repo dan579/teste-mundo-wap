@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_teste/main.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -12,8 +11,8 @@ class LoginPage extends StatefulWidget {
 
 class LoginPageState extends State<LoginPage> {
 
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController userController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,32 +29,49 @@ class LoginPageState extends State<LoginPage> {
                 width: 120,
                 height: 120,
               ),
+              const SizedBox(
+                height: 25,
+              ),
               Container(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextFormField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
+                      controller: userController,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(18))
+                        ),
                         labelText: 'Usuário',
                       ),
                     ),
+                    const SizedBox(
+                      height: 25,
+                    ),
                     TextFormField(
-                      controller: _passwordController,
-                      decoration: InputDecoration(
+                      controller: passwordController,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(18))
+                        ),
                         labelText: 'Senha',
                       ),
                       obscureText: true,
                     ),
                     SizedBox(height: 20.0),
-                    ElevatedButton(
+                    TextButton(
                       onPressed: () {
-                        String email = _emailController.text;
-                        String password = _passwordController.text;
-                        print('Usuário: $email, Senha: $password');
-                        Navigator.pushNamed(context, 'home');
+                        Navigator.pushReplacementNamed(context, 'home');
                       },
-                      child: Text('Login'),
+                      child: const Text('Login',
+                        style: TextStyle(
+                            fontSize: 15.0,
+                            fontFamily: 'Comfortaa',
+                            fontWeight: FontWeight.normal,
+                            color: Colors.blue),
+                      ),
                     ),
                   ],
                 ),

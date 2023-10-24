@@ -1,20 +1,16 @@
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto_teste/main.dart';
-import 'package:roundcheckbox/roundcheckbox.dart';
-
+import 'package:projeto_teste/pages/provider.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
-
   @override
-  State<HomePage> createState() => LoginPageState();
+  State<HomePage> createState() => HomePageState();
 }
 
-class LoginPageState extends State<HomePage> {
-
-
+class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,34 +21,26 @@ class LoginPageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-                padding: EdgeInsets.only(top: 25, bottom: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed: (){
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(
-                      Icons.arrow_back_ios
+              padding: EdgeInsets.only(top: 25, bottom: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Perfil de Usuário',
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'Comfortaa',
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black),
                   ),
-                ),
-                const Text(
-                  'Perfil de Usuário',
-                  style: TextStyle(
-                      fontSize: 20.0,
-                      fontFamily: 'Comfortaa',
-                      fontWeight: FontWeight.normal,
-                      color: Colors.black),
-                ),
-                Image.network(
-                  "https://mundowap.com.br/wp-content/uploads/2021/08/logo-mundo-wap.png",
-                  height: 50,
-                  width: 50,
-                ),
-              ],
-            ),
+                  Image.network(
+                    "https://mundowap.com.br/wp-content/uploads/2021/08/logo-mundo-wap.png",
+                    height: 50,
+                    width: 50,
+                  ),
+                ],
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -63,7 +51,7 @@ class LoginPageState extends State<HomePage> {
                   child: CircularProfileAvatar(
                     'Daniel',
                     borderColor: Colors.orangeAccent,
-                    borderWidth: 5,
+                    borderWidth: 1.5,
                     backgroundColor: Colors.white,
                     elevation: 2,
                     radius: 40,
@@ -87,7 +75,9 @@ class LoginPageState extends State<HomePage> {
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 25),
-              child: Divider(color: Colors.grey,),
+              child: Divider(
+                color: Colors.grey,
+              ),
             ),
             const Center(
               child: Text(
@@ -99,7 +89,8 @@ class LoginPageState extends State<HomePage> {
                     color: Colors.black),
               ),
             ),
-            Expanded(child: ListToDo(),
+            Expanded(
+              child: ListToDo(),
             ),
           ],
         ),
@@ -107,60 +98,49 @@ class LoginPageState extends State<HomePage> {
     );
   }
 }
-bool isSelected = true;
+
+bool isCompleted = false;
 
 ListToDo() {
   return ListView.builder(
-    padding: const EdgeInsets.all(15),
-    itemCount: names.length,
+    padding: const EdgeInsets.all(10),
+    itemCount: 14,
     itemBuilder: (BuildContext context, int index) {
       return Padding(
-        padding: EdgeInsets.symmetric(vertical: 2.5),
-        child: Container(
-          width: 150,
-          height: 55,
-          padding: EdgeInsets.only(left: 10, right: 10),
-          decoration: BoxDecoration(
-            color: isSelected ? Colors.blueGrey.withOpacity(0.2) : Colors.green.withOpacity(0.2),
-            borderRadius: BorderRadius.circular(8.0),
-            border: Border.all(color: Colors.black, width: 3),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                names[index],
-                style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                ),
+          padding: EdgeInsets.symmetric(vertical: 3),
+          child: InkWell(
+            child: Container(
+              width: 150,
+              height: 55,
+              padding: EdgeInsets.only(left: 10, right: 10),
+              decoration: BoxDecoration(
+                color: Colors.lightBlueAccent.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(8.0),
+                border: Border.all(color: Colors.grey, width: 1.2),
               ),
-              RoundCheckBox(
-                uncheckedColor: Colors.redAccent,
-                uncheckedWidget: Icon(Icons.close),
-                size: 25,
-                onTap: (selected) {
-                  isSelected = false;
-                },),
-            ],),
-        ),
-      );
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    Provider.of<MyProvider>(context, listen: false).names[index],
+                    style: const TextStyle(
+                        fontSize: 15.0,
+                        fontFamily: 'Comfortaa',
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black),
+                  ),
+                  Provider.of<MyProvider>(context, listen: false).isCompleted
+                            ? Icon(Icons.check)
+                            : Icon(Icons.close),
+                ],
+              ),
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, 'form');
+            },
+          ));
     },
   );
 }
 
-List<String> names = [
-  'Reunião Daily',
-  'Verificar PullRequest',
-  'Verificar Jira ',
-  'Reunião 11 da manhã',
-  'Reunião 14 da tarde',
-  "Reunião Sprint",
-  "Anotação diária",
-  'Reunião Daily',
-  'Verificar PullRequest',
-  'Verificar Jira ',
-  'Reunião 11 da manhã',
-  'Reunião 14 da tarde',
-  "Reunião Sprint",
-  "Anotação diária",
-];
+

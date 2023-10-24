@@ -44,7 +44,7 @@ class _SplashPageState extends State<SplashPage> {
                 child: AnimatedTextKit(
                   isRepeatingAnimation: false,
                   onFinished: () {
-                    Navigator.pushNamed(context, 'login');
+                    Navigator.pushReplacementNamed(context, 'login');
                   },
                   animatedTexts: [
                     RotateAnimatedText(
