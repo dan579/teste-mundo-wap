@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:projeto_teste/pages/form/form_page.dart';
 import 'package:projeto_teste/pages/home/home_page.dart';
 import 'package:projeto_teste/pages/login/login.dart';
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
         'login': (context) => const LoginPage(),
         'home': (context) => const HomePage(),
         'form': (context) => const FormPage(),
-
       },
       initialRoute: '/',
       title: 'Projeto Teste',

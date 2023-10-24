@@ -16,12 +16,12 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 25, bottom: 10),
+              padding: const EdgeInsets.only(top: 25, bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,7 +47,7 @@ class HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 10, top: 15),
+                  padding: const EdgeInsets.only(left: 10, top: 15),
                   child: CircularProfileAvatar(
                     'Daniel',
                     borderColor: Colors.orangeAccent,
@@ -107,12 +107,12 @@ ListToDo() {
     itemCount: 14,
     itemBuilder: (BuildContext context, int index) {
       return Padding(
-          padding: EdgeInsets.symmetric(vertical: 3),
+          padding: const EdgeInsets.symmetric(vertical: 3),
           child: InkWell(
             child: Container(
               width: 150,
               height: 55,
-              padding: EdgeInsets.only(left: 10, right: 10),
+              padding: const EdgeInsets.only(left: 10, right: 10),
               decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(8.0),
@@ -130,15 +130,16 @@ ListToDo() {
                         color: Colors.black),
                   ),
                   Provider.of<MyProvider>(context, listen: false).isCompleted
-                            ? Icon(Icons.check, color: Colors.green,)
-                            : Icon(Icons.close, color: Colors.red,),
+                            ? const Icon(Icons.check, color: Colors.green,)
+                            : const Icon(Icons.close, color: Colors.red,),
                 ],
               ),
             ),
             onTap: () {
               Navigator.pushNamed(context, 'form');
             },
-          ));
+          ),
+      );
     },
   );
 }

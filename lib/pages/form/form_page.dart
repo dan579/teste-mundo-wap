@@ -1,9 +1,5 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:parent_child_checkbox/parent_child_checkbox.dart';
-import 'package:projeto_teste/pages/home/home_page.dart';
-import 'package:projeto_teste/pages/home/home_page.dart';
 import 'package:projeto_teste/provider/provider.dart';
 import 'package:provider/provider.dart';
 
@@ -26,12 +22,12 @@ class FormPageState extends State<FormPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 25, bottom: 150),
+              padding: const EdgeInsets.only(top: 25, bottom: 150),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,7 +36,7 @@ class FormPageState extends State<FormPage> {
                     onPressed: (){
                       Navigator.pop(context);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                         Icons.arrow_back_ios
                     ),
                   ),
@@ -63,41 +59,38 @@ class FormPageState extends State<FormPage> {
               child: Column(
               children: <Widget>[
                 SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
+                  physics: const AlwaysScrollableScrollPhysics(),
                   child: Column(
                     children: [
                       ParentChildCheckbox(
                         parent: const Text('Fluxo Login'),
                         parentCheckboxColor: Colors.green,
                         childrenCheckboxColor: Colors.blueAccent,
-                        children: [
+                        children: const [
                           Text('Tela Login'),
                           Text('Tela Home'),
                           Text('Tela Formulário de taferas'),
                           Text('Tela Splash (Opcional)'),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            TextFormField(
-                              controller: form1Controller,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(18))
-                                ),
-                                labelText: 'Observação',
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          TextFormField(
+                            controller: form1Controller,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(18))
                               ),
+                              labelText: 'Observação',
                             ),
-                            SizedBox(height: 20.0),
-
-                          ],
-                        ),
+                          ),
+                          const SizedBox(height: 20.0),
+                        ],
                       ),
                     ],
                   ),
@@ -106,10 +99,10 @@ class FormPageState extends State<FormPage> {
             ),
             ),
           ],
-        )
+        ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 80, vertical: 25),
+        padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 25),
         child:  InkWell(
           child: Container(
               height: 45,
@@ -119,7 +112,7 @@ class FormPageState extends State<FormPage> {
                   border: Border.all(color: Colors.blueGrey, width: 1.2),
                   borderRadius: BorderRadius.circular(8)
               ),
-              child: Center(
+              child: const Center(
                 child: Text('Finalizar Tarefa',
                   textAlign: TextAlign.center,
                   style: TextStyle(

@@ -5,10 +5,10 @@ class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
 
   @override
-  _SplashPageState createState() => _SplashPageState();
+  SplashPageState createState() => SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage> {
+class SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
@@ -24,19 +24,17 @@ class _SplashPageState extends State<SplashPage> {
         color: Colors.white,
         child: Stack(children: [
           Center(
-              child: Container(
-                child: Image.network(
-                  "https://mundowap.com.br/wp-content/uploads/2021/08/logo-mundo-wap.png",
-                  height: 175,
-                  width: 175,
-                ),
+              child: Image.network(
+                "https://mundowap.com.br/wp-content/uploads/2021/08/logo-mundo-wap.png",
+                height: 175,
+                width: 175,
               )),
           Center(
             child: Padding(
               padding:
               EdgeInsets.only(top: MediaQuery.of(context).size.height / 4),
               child: DefaultTextStyle(
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 18.0,
                     fontFamily: 'Comfortaa',
                     fontWeight: FontWeight.normal,
@@ -49,7 +47,7 @@ class _SplashPageState extends State<SplashPage> {
                   animatedTexts: [
                     RotateAnimatedText('Mundo Wap',
                         alignment: Alignment.center,
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           fontSize: 15,
                         )),
                     RotateAnimatedText(
