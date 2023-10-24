@@ -39,6 +39,7 @@ dependencies:
   animated_text_kit: ^4.2.2
   circular_profile_avatar: ^2.0.5
   provider: ^6.0.5
+  parent_child_checkbox: ^0.0.5
 
 
 

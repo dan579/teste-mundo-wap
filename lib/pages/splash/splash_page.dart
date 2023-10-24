@@ -47,15 +47,15 @@ class _SplashPageState extends State<SplashPage> {
                     Navigator.pushReplacementNamed(context, 'login');
                   },
                   animatedTexts: [
-                    RotateAnimatedText(
-                      'Teste para vaga de desenvolvedor mobile',
-                      alignment: Alignment.center,
-                    ),
-                    RotateAnimatedText('Seja bem vindo',
+                    RotateAnimatedText('Mundo Wap',
                         alignment: Alignment.center,
                         textStyle: TextStyle(
                           fontSize: 15,
                         )),
+                    RotateAnimatedText(
+                      'Teste para vaga de desenvolvedor mobile',
+                      alignment: Alignment.center,
+                    ),
                   ],
                   onTap: () {},
                 ),

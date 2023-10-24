@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:projeto_teste/pages/form/form_page.dart';
 import 'package:projeto_teste/pages/home/home_page.dart';
 import 'package:projeto_teste/pages/login/login.dart';
-import 'package:projeto_teste/pages/provider.dart';
+import 'package:projeto_teste/provider/provider.dart';
 import 'package:projeto_teste/pages/splash/splash_page.dart';
 import 'package:provider/provider.dart';
 
