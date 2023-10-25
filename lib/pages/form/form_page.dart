@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_teste/pages/home/home_page.dart';
-import 'package:projeto_teste/provider/provider.dart';
-import 'package:provider/provider.dart';
 
 
 class FormPage extends StatefulWidget {
@@ -32,14 +29,14 @@ class FormPageState extends State<FormPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 25, bottom: 250),
+              padding: const EdgeInsets.only(top: 25, bottom: 250),
               child: Row(
                 children:  [
                   IconButton(
                       onPressed: (){
                         Navigator.pop(context);
                       },
-                      icon: Icon(Icons.arrow_back_ios)
+                      icon: const Icon(Icons.arrow_back_ios)
                   ),
                   const SizedBox(width: 50.0),
                   const Text(

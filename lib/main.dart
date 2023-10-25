@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //Rotas de navegação entre páginas
+      //Rotas de navegação entre telas
       routes: {
         'login': (context) => const LoginPage(),
         'home': (context) => const HomePage(),
