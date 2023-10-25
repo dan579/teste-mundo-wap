@@ -13,7 +13,8 @@ Lista de Tarefas: A lista de tarefas exibe o título e a descrição de cada tar
 ![WhatsApp Image 2023-10-25 at 12 45 16 AM](https://github.com/dan579/teste_mundo-wap/assets/98837347/219c274e-987c-4098-9e21-ce8a79262972)
 
 Tela de Formulário: Ao clicar em uma das tarefas será encaminhado para a pagina de formulário. Onde terá dois campos para preencher obrigatoriamente. Ao clicar em "Finalizar Tarefa", a tarefa é marcada como cumprida e retorna à página inicial com o ícone correspondente.
-![WhatsApp Image 2023-10-25 at 12 49 53 AM](https://github.com/dan579/teste_mundo-wap/assets/98837347/26dbf4d0-00a5-4f0e-9763-03d2019bae14)
+![WhatsApp Image 2023-10-25 at 2 54 53 PM](https://github.com/dan579/teste-mundo-wap/assets/98837347/089c0d71-397e-49eb-8ead-cbdc1e4ad8a2)
+
 
 
 Tecnologias Utilizadas 
