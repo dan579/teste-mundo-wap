@@ -39,6 +39,7 @@ class SplashPageState extends State<SplashPage> {
                     fontFamily: 'Comfortaa',
                     fontWeight: FontWeight.normal,
                     color: Colors.black),
+                //Biblioteca importada para animação no splash
                 child: AnimatedTextKit(
                   isRepeatingAnimation: false,
                   onFinished: () {
@@ -51,7 +52,7 @@ class SplashPageState extends State<SplashPage> {
                           fontSize: 15,
                         )),
                     RotateAnimatedText(
-                      'Teste para vaga de desenvolvedor mobile',
+                      'App experimental para testes',
                       alignment: Alignment.center,
                     ),
                   ],

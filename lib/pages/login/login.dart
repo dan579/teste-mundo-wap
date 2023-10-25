@@ -11,6 +11,7 @@ class LoginPage extends StatefulWidget {
 
 class LoginPageState extends State<LoginPage> {
 
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController userController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -72,6 +73,9 @@ class LoginPageState extends State<LoginPage> {
                             }
                             return null;
                           },
+                          onSaved: (userValue) {
+                            user = userValue!;
+                          },
                         ),
                         const SizedBox(
                           height: 25,
@@ -95,6 +99,9 @@ class LoginPageState extends State<LoginPage> {
                               return 'Este campo é obrigatório.';
                             }
                             return null;
+                          },
+                          onSaved: (passwordValue) {
+                            password = passwordValue!;
                           },
                         ),
                         const SizedBox(height: 50.0),
@@ -120,6 +127,7 @@ class LoginPageState extends State<LoginPage> {
                           ),
                           onTap: () {
                               if (formKey.currentState!.validate()) {
+                                formKey.currentState!.save();
                                 Navigator.pushReplacementNamed(context, 'home');
                               }
                           },

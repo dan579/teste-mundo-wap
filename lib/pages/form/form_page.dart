@@ -15,10 +15,10 @@ class FormPage extends StatefulWidget {
 class FormPageState extends State<FormPage> {
 
   final TextEditingController form1Controller = TextEditingController();
-  final TextEditingController form2Controller = TextEditingController();
+  int index = 0;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
@@ -62,6 +62,7 @@ class FormPageState extends State<FormPage> {
                   physics: const AlwaysScrollableScrollPhysics(),
                   child: Column(
                     children: [
+                      //Biblioteca importada para exibição do checkBox
                       ParentChildCheckbox(
                         parent: const Text('Fluxo Login'),
                         parentCheckboxColor: Colors.green,
@@ -124,7 +125,6 @@ class FormPageState extends State<FormPage> {
               )
           ),
           onTap: () {
-            Provider.of<MyProvider>(context, listen: false).isCompleted = true;
             Navigator.pushReplacementNamed(context, 'home');
           },
         ),

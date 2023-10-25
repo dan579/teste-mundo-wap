@@ -20,13 +20,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //Rotas de navegação entre páginas
       routes: {
         'login': (context) => const LoginPage(),
         'home': (context) => const HomePage(),
         'form': (context) => const FormPage(),
       },
       initialRoute: '/',
-      title: 'Projeto Teste',
+      title: 'Mundo Wap',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
