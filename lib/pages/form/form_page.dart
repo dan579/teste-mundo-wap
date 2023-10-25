@@ -11,6 +11,7 @@ class FormPage extends StatefulWidget {
 
 class FormPageState extends State<FormPage> {
 
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController form1Controller = TextEditingController();
   final TextEditingController form2Controller = TextEditingController();
 
@@ -40,32 +41,47 @@ class FormPageState extends State<FormPage> {
             Center(
               child:  SingleChildScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
-                child:  Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    TextFormField(
-                      controller: form1Controller,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(18))
+                child: Form(
+                  key: formKey,
+                  child:  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextFormField(
+                        controller: form1Controller,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(18))
+                          ),
+                          labelText: 'Informações principais',
                         ),
-                        labelText: 'Informações principais',
+                        validator: (form1Value) {
+                          if (form1Value!.isEmpty) {
+                            return 'Este campo é obrigatório.';
+                          }
+                          return null;
+                        },
                       ),
-                    ),
-                    const SizedBox(height: 20.0),
-                    TextFormField(
-                      controller: form2Controller,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(18))
+                      const SizedBox(height: 20.0),
+                      TextFormField(
+                        controller: form2Controller,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(18))
+                          ),
+                          labelText: 'Observações adicionais',
                         ),
-                        labelText: 'Observações adicionais',
+                        validator: (form2Value) {
+                          if (form2Value!.isEmpty) {
+                            return 'Este campo é obrigatório.';
+                          }
+                          return null;
+                        },
                       ),
-                    ),
-                    const SizedBox(height: 20.0),
-                  ],
+                      const SizedBox(height: 20.0),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -95,7 +111,10 @@ class FormPageState extends State<FormPage> {
               )
           ),
           onTap: () {
-            Navigator.pushReplacementNamed(context, 'home');
+            if (formKey.currentState!.validate()) {
+              formKey.currentState!.save();
+              Navigator.pushReplacementNamed(context, 'home');
+            }
           },
         ),
       ),
