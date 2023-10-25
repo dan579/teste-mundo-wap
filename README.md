@@ -19,3 +19,9 @@ Tela de Formulário: Ao clicar em uma das tarefas será encaminhado para a pagin
 Tecnologias Utilizadas 
 Flutter 3.13.7
 Dart 3.1.3
+
+Bibliotecas Utilizadas
+  cupertino_icons: ^1.0.2
+  animated_text_kit: ^4.2.2
+  circular_profile_avatar: ^2.0.5
+  provider: ^6.0.5
