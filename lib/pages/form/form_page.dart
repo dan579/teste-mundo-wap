@@ -38,7 +38,7 @@ class FormPageState extends State<FormPage> {
                       },
                       icon: const Icon(Icons.arrow_back_ios)
                   ),
-                  const SizedBox(width: 50.0),
+                  const SizedBox(width: 45.0),
                   const Text(
                   'Formulário para \nrealização da tarefa',
                   textAlign: TextAlign.center,
