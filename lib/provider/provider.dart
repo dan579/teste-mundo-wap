@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 import 'package:flutter/widgets.dart';
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
+
 
 class MyProvider with ChangeNotifier {
-
-  bool isCompleted = false;
 
   // lista de bool para verificar tarefas
   List<bool> check = List.generate(7, (index) => false);

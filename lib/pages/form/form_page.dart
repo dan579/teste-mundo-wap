@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_teste/pages/home/home_page.dart';
+import 'package:projeto_teste/provider/provider.dart';
+import 'package:provider/provider.dart';
 
 
 class FormPage extends StatefulWidget {
@@ -15,6 +18,10 @@ class FormPageState extends State<FormPage> {
   final TextEditingController form1Controller = TextEditingController();
   final TextEditingController form2Controller = TextEditingController();
 
+  String form1 = '';
+  String form2 = '';
+
+
   @override
   Widget build(BuildContext context,) {
     return Scaffold(
@@ -24,10 +31,18 @@ class FormPageState extends State<FormPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(top: 25, bottom: 250),
-              child: Center(
-                child:  Text(
+              child: Row(
+                children:  [
+                  IconButton(
+                      onPressed: (){
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(Icons.arrow_back_ios)
+                  ),
+                  const SizedBox(width: 50.0),
+                  const Text(
                   'Formulário para \nrealização da tarefa',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -36,14 +51,15 @@ class FormPageState extends State<FormPage> {
                       fontWeight: FontWeight.normal,
                       color: Colors.black),
                 ),
+              ]
               ),
             ),
             Center(
               child:  SingleChildScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
-                child: Form(
+                child:  Form(
                   key: formKey,
-                  child:  Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       TextFormField(
@@ -61,6 +77,9 @@ class FormPageState extends State<FormPage> {
                           }
                           return null;
                         },
+                        onSaved: (form1Value) {
+                          form1 = form1Value!;
+                        },
                       ),
                       const SizedBox(height: 20.0),
                       TextFormField(
@@ -77,6 +96,9 @@ class FormPageState extends State<FormPage> {
                             return 'Este campo é obrigatório.';
                           }
                           return null;
+                        },
+                        onSaved: (form2Value) {
+                          form2 = form2Value!;
                         },
                       ),
                       const SizedBox(height: 20.0),
@@ -111,10 +133,8 @@ class FormPageState extends State<FormPage> {
               )
           ),
           onTap: () {
-            if (formKey.currentState!.validate()) {
-              formKey.currentState!.save();
-              Navigator.pushReplacementNamed(context, 'home');
-            }
+            formKey.currentState!.save();
+            Navigator.pushReplacementNamed(context, 'home');
           },
         ),
       ),

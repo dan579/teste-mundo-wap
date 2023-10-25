@@ -28,7 +28,8 @@ class SplashPageState extends State<SplashPage> {
                 "https://mundowap.com.br/wp-content/uploads/2021/08/logo-mundo-wap.png",
                 height: 175,
                 width: 175,
-              )),
+              ),
+          ),
           Center(
             child: Padding(
               padding:
@@ -39,7 +40,7 @@ class SplashPageState extends State<SplashPage> {
                     fontFamily: 'Comfortaa',
                     fontWeight: FontWeight.normal,
                     color: Colors.black),
-                //Biblioteca importada para animação no splash
+                //Biblioteca utilizada para animação no splash
                 child: AnimatedTextKit(
                   isRepeatingAnimation: false,
                   onFinished: () {
