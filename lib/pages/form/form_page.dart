@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:parent_child_checkbox/parent_child_checkbox.dart';
-import 'package:projeto_teste/provider/provider.dart';
-import 'package:provider/provider.dart';
 
 
 class FormPage extends StatefulWidget {
@@ -15,7 +12,7 @@ class FormPage extends StatefulWidget {
 class FormPageState extends State<FormPage> {
 
   final TextEditingController form1Controller = TextEditingController();
-  int index = 0;
+  final TextEditingController form2Controller = TextEditingController();
 
   @override
   Widget build(BuildContext context,) {
@@ -26,78 +23,51 @@ class FormPageState extends State<FormPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 25, bottom: 150),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  IconButton(
-                    onPressed: (){
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(
-                        Icons.arrow_back_ios
-                    ),
-                  ),
-                  const Text(
-                    'Formulário para \nrealização da tarefa',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        fontFamily: 'Comfortaa',
-                        fontWeight: FontWeight.normal,
-                        color: Colors.black),
-                  ),
-                  const SizedBox(
-                    width: 50,
-                  ),
-                ],
+            const Padding(
+              padding: EdgeInsets.only(top: 25, bottom: 250),
+              child: Center(
+                child:  Text(
+                  'Formulário para \nrealização da tarefa',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      fontFamily: 'Comfortaa',
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black),
+                ),
               ),
             ),
             Center(
-              child: Column(
-              children: <Widget>[
-                SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  child: Column(
-                    children: [
-                      //Biblioteca importada para exibição do checkBox
-                      ParentChildCheckbox(
-                        parent: const Text('Fluxo Login'),
-                        parentCheckboxColor: Colors.green,
-                        childrenCheckboxColor: Colors.blueAccent,
-                        children: const [
-                          Text('Tela Login'),
-                          Text('Tela Home'),
-                          Text('Tela Formulário de taferas'),
-                          Text('Tela Splash (Opcional)'),
-                        ],
+              child:  SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child:  Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextFormField(
+                      controller: form1Controller,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(18))
+                        ),
+                        labelText: 'Informações principais',
                       ),
-                      const SizedBox(
-                        height: 15,
+                    ),
+                    const SizedBox(height: 20.0),
+                    TextFormField(
+                      controller: form2Controller,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(18))
+                        ),
+                        labelText: 'Observações adicionais',
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          TextFormField(
-                            controller: form1Controller,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(18))
-                              ),
-                              labelText: 'Observação',
-                            ),
-                          ),
-                          const SizedBox(height: 20.0),
-                        ],
-                      ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 20.0),
+                  ],
                 ),
-              ],
-            ),
+              ),
             ),
           ],
         ),
